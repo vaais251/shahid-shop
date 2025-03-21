@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="600" height="400" xmlns="http://www.w3.org/2000/svg">
+  <rect width="600" height="400" fill="#28a745"/>
+  <text x="300" y="200" font-family="Arial" font-size="36" text-anchor="middle" fill="white">Water Bottle</text>
+  
+  <!-- Bottle shape -->
+  <path d="M270,100 L330,100 L340,120 L340,320 C340,330 330,340 320,340 L280,340 C270,340 260,330 260,320 L260,120 Z" fill="white" opacity="0.3"/>
+  <ellipse cx="300" cy="100" rx="30" ry="10" fill="white" opacity="0.3"/>
+  <rect x="290" y="80" width="20" height="20" fill="white" opacity="0.4"/>
+</svg>

@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart - ShopEase</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        /* Cart Page Specific Styles */
+        .cart-container {
+            padding: 60px 0;
+        }
+        
+        .cart-header {
+            margin-bottom: 30px;
+        }
+        
+        .cart-empty {
+            text-align: center;
+            padding: 50px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: var(--box-shadow);
+        }
+        
+        .cart-empty i {
+            font-size: 3rem;
+            color: var(--light-text);
+            margin-bottom: 20px;
+        }
+        
+        .cart-empty p {
+            margin-bottom: 20px;
+            color: var(--light-text);
+        }
+        
+        .cart-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 30px;
+        }
+        
+        .cart-items-container {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: var(--box-shadow);
+            padding: 20px;
+        }
+        
+        .cart-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .cart-table th {
+            text-align: left;
+            padding: 15px 10px;
+            border-bottom: 1px solid var(--border-color);
+            font-weight: 600;
+        }
+        
+        .cart-table td {
+            padding: 15px 10px;
+            border-bottom: 1px solid var(--border-color);
+            vertical-align: middle;
+        }
+        
+        .cart-product {
+            display: flex;
+            align-items: center;
+        }
+        
+        .cart-product-image {
+            width: 80px;
+            height: 80px;
+            border-radius: 4px;
+            overflow: hidden;
+            margin-right: 15px;
+        }
+        
+        .cart-product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .cart-product-details h4 {
+            margin-bottom: 5px;
+        }
+        
+        .cart-product-details p {
+            color: var(--light-text);
+            font-size: 0.9rem;
+        }
+        
+        .cart-quantity {
+            display: flex;
+            align-items: center;
+        }
+        
+        .quantity-btn {
+            width: 30px;
+            height: 30px;
+            background-color: var(--secondary-color);
+            border: none;
+            border-radius: 4px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+        
+        .quantity-input {
+            width: 40px;
+            height: 30px;
+            text-align: center;
+            margin: 0 5px;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+        }
+        
+        .cart-remove {
+            color: var(--error-color);
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1.2rem;
+        }
+        
+        .cart-actions {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+        }
+        
+        .continue-shopping {
+            display: flex;
+            align-items: center;
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+        
+        .continue-shopping i {
+            margin-right: 5px;
+        }
+        
+        .clear-cart {
+            color: var(--error-color);
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+        }
+        
+        .cart-summary-container {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: var(--box-shadow);
+            padding: 20px;
+        }
+        
+        .cart-summary-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .summary-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+        }
+        
+        .summary-item.total {
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid var(--border-color);
+        }
+        
+        .promo-code {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+        }
+        
+        .promo-code h3 {
+            font-size: 1rem;
+            margin-bottom: 15px;
+        }
+        
+        .promo-form {
+            display: flex;
+        }
+        
+        .promo-form input {
+            flex-grow: 1;
+            padding: 10px;
+            border: 1px solid var(--border-color);
+            border-radius: 4px 0 0 4px;
+        }
+        
+        .promo-form button {
+            padding: 10px 15px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 0 4px 4px 0;
+            cursor: pointer;
+        }
+        
+        .checkout-button {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-weight: 600;
+            text-align: center;
+            margin-top: 20px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .checkout-button:hover {
+            background-color: #3a5bd4;
+        }
+        
+        @media (max-width: 768px) {
+            .cart-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .cart-table {
+                display: block;
+                overflow-x: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>ShopEase</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="shop.html">Shop</a></li>
+                    <li><a href="categories.html">Categories</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="header-icons">
+                <a href="account.html"><i class="fas fa-user"></i></a>
+                <a href="wishlist.html"><i class="fas fa-heart"></i></a>
+                <a href="cart.html" class="cart-icon active">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count">0</span>
+                </a>
+            </div>
+            <div class="mobile-menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Cart Section -->
+    <section class="cart-container">
+        <div class="container">
+            <div class="cart-header">
+                <h1 class="section-title">Shopping Cart</h1>
+            </div>
+            
+            <div id="cart-content">
+                <!-- Cart content will be loaded dynamically via JavaScript -->
+                <!-- Empty cart state (shown by default, hidden when cart has items) -->
+                <div class="cart-empty" id="empty-cart">
+                    <i class="fas fa-shopping-cart"></i>
+                    <h2>Your cart is empty</h2>
+                    <p>Looks like you haven't added any products to your cart yet.</p>
+                    <a href="shop.html" class="btn">Continue Shopping</a>
+                </div>
+                
+                <!-- Cart with items (hidden by default, shown when cart has items) -->
+                <div class="cart-content" id="cart-with-items" style="display: none;">
+                    <div class="cart-items-container">
+                        <table class="cart-table">
+                            <thead>
+                                <tr>
+                                    <th>Product</th>
+                                    <th>Price</th>
+                                    <th>Quantity</th>
+                                    <th>Subtotal</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody id="cart-table-body">
+                                <!-- Cart items will be loaded here -->
+                            </tbody>
+                        </table>
+                        
+                        <div class="cart-actions">
+                            <a href="shop.html" class="continue-shopping">
+                                <i class="fas fa-arrow-left"></i> Continue Shopping
+                            </a>
+                            <button class="clear-cart" id="clear-cart-btn">Clear Cart</button>
+                        </div>
+                    </div>
+                    
+                    <div class="cart-summary-container">
+                        <h2 class="cart-summary-title">Order Summary</h2>
+                        
+                        <div class="summary-item">
+                            <span>Subtotal:</span>
+                            <span id="cart-subtotal">$0.00</span>
+                        </div>
+                        <div class="summary-item">
+                            <span>Shipping:</span>
+                            <span id="cart-shipping">$0.00</span>
+                        </div>
+                        <div class="summary-item">
+                            <span>Tax (10%):</span>
+                            <span id="cart-tax">$0.00</span>
+                        </div>
+                        <div class="summary-item total">
+                            <span>Total:</span>
+                            <span id="cart-total">$0.00</span>
+                        </div>
+                        
+                        <div class="promo-code">
+                            <h3>Promo Code</h3>
+                            <form class="promo-form">
+                                <input type="text" placeholder="Enter promo code">
+                                <button type="submit">Apply</button>
+                            </form>
+                        </div>
+                        
+                        <a href="checkout.html" class="checkout-button">Proceed to Checkout</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>ShopEase</h3>
+                    <p>Your one-stop shop for all your needs. Quality products at affordable prices.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-pinterest"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="shop.html">Shop</a></li>
+                        <li><a href="categories.html">Categories</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Customer Service</h3>
+                    <ul>
+                        <li><a href="faq.html">FAQ</a></li>
+                        <li><a href="shipping.html">Shipping & Returns</a></li>
+                        <li><a href="terms.html">Terms & Conditions</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Info</h3>
+                    <ul class="contact-info">
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Main Street, City, Country</li>
+                        <li><i class="fas fa-phone"></i> +1 234 567 890</li>
+                        <li><i class="fas fa-envelope"></i> info@shopease.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 ShopEase. All Rights Reserved.</p>
+                <div class="payment-methods">
+                    <i class="fab fa-cc-visa"></i>
+                    <i class="fab fa-cc-mastercard"></i>
+                    <i class="fab fa-cc-amex"></i>
+                    <i class="fab fa-cc-paypal"></i>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="../js/products.js"></script>
+    <script src="../js/cart.js"></script>
+    <script src="../js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Initialize cart
+            const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+            
+            // Update UI based on cart state
+            updateCartUI(cartItems);
+            
+            // Clear cart button
+            const clearCartBtn = document.getElementById('clear-cart-btn');
+            if (clearCartBtn) {
+                clearCartBtn.addEventListener('click', () => {
+                    if (confirm('Are you sure you want to clear your cart?')) {
+                        localStorage.setItem('cart', JSON.stringify([]));
+                        updateCartUI([]);
+                    }
+                });
+            }
+            
+            // Promo code form
+            const promoForm = document.querySelector('.promo-form');
+            if (promoForm) {
+                promoForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    const promoInput = promoForm.querySelector('input');
+                    const promoCode = promoInput.value.trim();
+                    
+                    if (!promoCode) {
+                        alert('Please enter a promo code');
+                        return;
+                    }
+                    
+                    // In a real application, you would validate the promo code with the server
+                    // For demo purposes, we'll just show a message
+                    alert(`Promo code "${promoCode}" applied!`);
+                    promoInput.value = '';
+                });
+            }
+        });
+        
+        // Update cart UI based on cart items
+        function updateCartUI(cartItems) {
+            const emptyCart = document.getElementById('empty-cart');
+            const cartWithItems = document.getElementById('cart-with-items');
+            const cartTableBody = document.getElementById('cart-table-body');
+            const cartSubtotal = document.getElementById('cart-subtotal');
+            const cartShipping = document.getElementById('cart-shipping');
+            const cartTax = document.getElementById('cart-tax');
+            const cartTotal = document.getElementById('cart-total');
+            const cartCount = document.querySelector('.cart-count');
+            
+            // Update cart count in header
+            const itemCount = cartItems.reduce((count, item) => count + item.quantity, 0);
+            cartCount.textContent = itemCount;
+            
+            if (cartItems.length === 0) {
+                // Show empty cart message
+                emptyCart.style.display = 'block';
+                cartWithItems.style.display = 'none';
+                return;
+            }
+            
+            // Show cart with items
+            emptyCart.style.display = 'none';
+            cartWithItems.style.display = 'grid';
+            
+            // Clear current items
+            cartTableBody.innerHTML = '';
+            
+            // Calculate cart totals
+            let subtotal = 0;
+            
+            // Add each item to cart table
+            cartItems.forEach(item => {
+                const itemSubtotal = item.price * item.quantity;
+                subtotal += itemSubtotal;
+                
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td>
+                        <div class="cart-product">
+                            <div class="cart-product-image">
+                                <img src="../${item.image}" alt="${item.name}">
+                            </div>
+                            <div class="cart-product-details">
+                                <h4>${item.name}</h4>
+                                <p>SKU: ${item.id.toString().padStart(3, '0')}</p>
+                            </div>
+                        </div>
+                    </td>
+                    <td>$${item.price.toFixed(2)}</td>
+                    <td>
+                        <div class="cart-quantity">
+                            <button class="quantity-btn decrease" data-id="${item.id}">-</button>
+                            <input type="number" class="quantity-input" value="${item.quantity}" min="1" data-id="${item.id}">
+                            <button class="quantity-btn increase" data-id="${item.id}">+</button>
+                        </div>
+                    </td>
+                    <td>$${itemSubtotal.toFixed(2)}</td>
+                    <td>
+                        <button class="cart-remove" data-id="${item.id}">
+                            <i class="fas fa-trash-alt"></i>
+                        </button>
+                    </td>
+                `;
+                
+                cartTableBody.appendChild(tr);
+            });
+            
+            // Calculate shipping (free shipping over $50, otherwise $5.99)
+            const shipping = subtotal > 50 ? 0 : 5.99;
+            
+            // Calculate tax (10%)
+            const tax = subtotal * 0.1;
+            
+            // Calculate total
+            const total = subtotal + shipping + tax;
+            
+            // Update cart summary
+            cartSubtotal.textContent = `$${subtotal.toFixed(2)}`;
+            cartShipping.textContent = shipping === 0 ? 'Free' : `$${shipping.toFixed(2)}`;
+            cartTax.textContent = `$${tax.toFixed(2)}`;
+            cartTotal.textContent = `$${total.toFixed(2)}`;
+            
+            // Add event listeners for quantity buttons and remove buttons
+            addCartItemEventListeners();
+        }
+        
+        // Add event listeners to cart items
+        function addCartItemEventListeners() {
+            // Decrease quantity buttons
+            document.querySelectorAll('.quantity-btn.decrease').forEach(button => {
+                button.addEventListener('click', () => {
+                    updateItemQuantity(button, -1);
+                });
+            });
+            
+            // Increase quantity buttons
+            document.querySelectorAll('.quantity-btn.increase').forEach(button => {
+                button.addEventListener('click', () => {
+                    updateItemQuantity(button, 1);
+                });
+            });
+            
+            // Quantity input fields
+            document.querySelectorAll('.quantity-input').forEach(input => {
+                input.addEventListener('change', () => {
+                    const productId = parseInt(input.getAttribute('data-id'));
+                    const quantity = parseInt(input.value);
+                    
+                    if (!isNaN(quantity) && quantity > 0) {
+                        updateCartItem(productId, quantity);
+                    }
+                });
+            });
+            
+            // Remove buttons
+            document.querySelectorAll('.cart-remove').forEach(button => {
+                button.addEventListener('click', () => {
+                    const productId = parseInt(button.getAttribute('data-id'));
+                    removeCartItem(productId);
+                });
+            });
+        }
+        
+        // Update item quantity
+        function updateItemQuantity(button, change) {
+            const productId = parseInt(button.getAttribute('data-id'));
+            const input = document.querySelector(`.quantity-input[data-id="${productId}"]`);
+            let quantity = parseInt(input.value) + change;
+            
+            if (quantity < 1) quantity = 1;
+            
+            input.value = quantity;
+            updateCartItem(productId, quantity);
+        }
+        
+        // Update cart item
+        function updateCartItem(productId, quantity) {
+            let cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+            const itemIndex = cartItems.findIndex(item => item.id === productId);
+            
+            if (itemIndex !== -1) {
+                cartItems[itemIndex].quantity = quantity;
+                localStorage.setItem('cart', JSON.stringify(cartItems));
+                updateCartUI(cartItems);
+            }
+        }
+        
+        // Remove cart item
+        function removeCartItem(productId) {
+            let cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+            cartItems = cartItems.filter(item => item.id !== productId);
+            localStorage.setItem('cart', JSON.stringify(cartItems));
+            updateCartUI(cartItems);
+        }
+    </script>
+</body>
+</html>

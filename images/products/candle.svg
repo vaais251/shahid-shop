@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="600" height="400" xmlns="http://www.w3.org/2000/svg">
+  <rect width="600" height="400" fill="#28a745"/>
+  <text x="300" y="200" font-family="Arial" font-size="36" text-anchor="middle" fill="white">Scented Candle</text>
+  
+  <!-- Candle shape -->
+  <rect x="250" y="150" width="100" height="150" rx="5" fill="white" opacity="0.4"/>
+  <rect x="290" y="120" width="20" height="30" fill="white" opacity="0.6"/>
+  <path d="M290,120 Q300,100 310,120" fill="yellow" opacity="0.8"/>
+</svg>

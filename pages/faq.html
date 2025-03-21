@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ - ShopEase</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        /* FAQ Page Specific Styles */
+        .faq-container {
+            padding: 60px 0;
+        }
+        
+        .faq-header {
+            margin-bottom: 40px;
+            text-align: center;
+        }
+        
+        .faq-categories {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        
+        .faq-category {
+            padding: 10px 20px;
+            background-color: white;
+            border-radius: 30px;
+            box-shadow: var(--box-shadow);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .faq-category.active {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .faq-category:hover {
+            transform: translateY(-3px);
+        }
+        
+        .faq-list {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .faq-item {
+            background-color: white;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            box-shadow: var(--box-shadow);
+            overflow: hidden;
+        }
+        
+        .faq-question {
+            padding: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+        
+        .faq-question:hover {
+            background-color: #f8f9fa;
+        }
+        
+        .faq-question i {
+            transition: var(--transition);
+        }
+        
+        .faq-answer {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+        }
+        
+        .faq-item.active .faq-question {
+            color: var(--primary-color);
+        }
+        
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+        
+        .faq-item.active .faq-answer {
+            padding: 0 20px 20px;
+            max-height: 1000px;
+        }
+        
+        .contact-cta {
+            margin-top: 60px;
+            text-align: center;
+            background-color: white;
+            border-radius: 8px;
+            padding: 40px;
+            box-shadow: var(--box-shadow);
+        }
+        
+        .contact-cta h3 {
+            margin-bottom: 15px;
+            color: var(--text-color);
+            font-size: 1.5rem;
+        }
+        
+        .contact-cta p {
+            margin-bottom: 20px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>ShopEase</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="shop.html">Shop</a></li>
+                    <li><a href="categories.html">Categories</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="header-icons">
+                <a href="account.html"><i class="fas fa-user"></i></a>
+                <a href="wishlist.html"><i class="fas fa-heart"></i></a>
+                <a href="cart.html" class="cart-icon">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count">0</span>
+                </a>
+            </div>
+            <div class="mobile-menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- FAQ Section -->
+    <section class="faq-container">
+        <div class="container">
+            <div class="faq-header">
+                <h1 class="section-title">Frequently Asked Questions</h1>
+                <p>Find answers to the most common questions about ShopEase</p>
+            </div>
+            
+            <div class="faq-categories">
+                <div class="faq-category active" data-category="all">All</div>
+                <div class="faq-category" data-category="orders">Orders & Shipping</div>
+                <div class="faq-category" data-category="returns">Returns & Refunds</div>
+                <div class="faq-category" data-category="account">Account & Payment</div>
+                <div class="faq-category" data-category="products">Products</div>
+            </div>
+            
+            <div class="faq-list">
+                <!-- Orders & Shipping FAQs -->
+                <div class="faq-item" data-category="orders">
+                    <div class="faq-question">
+                        <span>How long does shipping take?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Standard shipping typically takes 3-5 business days within the continental United States. International shipping can take 7-14 business days, depending on the destination and customs processing. Expedited shipping options are available at checkout for faster delivery.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item" data-category="orders">
+                    <div class="faq-question">
+                        <span>How can I track my order?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Once your order ships, you'll receive a confirmation email with a tracking number. You can also track your order by logging into your account and viewing your order history. The tracking information will show the current status and estimated delivery date of your package.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item" data-category="orders">
+                    <div class="faq-question">
+                        <span>Do you ship internationally?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, we ship to most countries worldwide. International shipping rates and delivery times vary by location. Please note that customers are responsible for any customs fees, taxes, or duties that may be imposed by their country's customs authorities.</p>
+                    </div>
+                </div>
+                
+                <!-- Returns & Refunds FAQs -->
+                <div class="faq-item" data-category="returns">
+                    <div class="faq-question">
+                        <span>What is your return policy?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We offer a 30-day return policy for most items. Products must be in their original condition with all tags and packaging intact. Certain items, such as personalized products or intimate apparel, are not eligible for return due to hygiene reasons. Please visit our <a href="shipping.html">Shipping & Returns</a> page for complete details.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item" data-category="returns">
+                    <div class="faq-question">
+                        <span>How do I initiate a return?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>To initiate a return, log into your account, go to your order history, and select the "Return" option for the relevant order. Follow the prompts to generate a return shipping label. You can also contact our customer service team for assistance with returns.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item" data-category="returns">
+                    <div class="faq-question">
+                        <span>How long does it take to process a refund?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Once we receive your returned item, it typically takes 3-5 business days to process the return. After processing, refunds are issued to the original payment method and may take an additional 5-10 business days to appear on your statement, depending on your financial institution.</p>
+                    </div>
+                </div>
+                
+                <!-- Account & Payment FAQs -->
+                <div class="faq-item" data-category="account">
+                    <div class="faq-question">
+                        <span>How do I create an account?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>You can create an account by clicking on the user icon in the top right corner of our website and selecting "Register." You'll need to provide your email address and create a password. You can also create an account during the checkout process.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item" data-category="account">
+                    <div class="faq-question">
+                        <span>What payment methods do you accept?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We accept all major credit cards (Visa, Mastercard, American Express, Discover), PayPal, Apple Pay, and Google Pay. All payment information is securely encrypted and processed through PCI-compliant payment gateways.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item" data-category="account">
+                    <div class="faq-question">
+                        <span>Is my personal information secure?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, we take data security very seriously. Our website uses SSL encryption to protect your personal and payment information. We never store complete credit card details on our servers. For more information, please review our <a href="privacy.html">Privacy Policy</a>.</p>
+                    </div>
+                </div>
+                
+                <!-- Products FAQs -->
+                <div class="faq-item" data-category="products">
+                    <div class="faq-question">
+                        <span>Are your products authentic?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, all products sold on ShopEase are 100% authentic. We source our products directly from manufacturers or authorized distributors to ensure authenticity and quality. We do not sell counterfeit or replica items.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item" data-category="products">
+                    <div class="faq-question">
+                        <span>How can I check if an item is in stock?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Product availability is displayed on each product page. If an item is in stock, you'll see the available quantity or simply "In Stock." If an item is out of stock, you'll see "Out of Stock" and may have the option to sign up for restock notifications.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item" data-category="products">
+                    <div class="faq-question">
+                        <span>Do you offer warranties on your products?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Many of our products come with manufacturer warranties. Warranty information, if applicable, is listed on the product page. Additionally, all products are covered by our 30-day satisfaction guarantee. For warranty claims beyond our return period, please contact the manufacturer directly.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="contact-cta">
+                <h3>Couldn't Find Your Answer?</h3>
+                <p>If you have a question that isn't answered here, our customer service team is ready to help. Contact us via email, phone, or our contact form.</p>
+                <a href="contact.html" class="btn">Contact Us</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>ShopEase</h3>
+                    <p>Your one-stop shop for all your needs. Quality products at affordable prices.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-pinterest"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="shop.html">Shop</a></li>
+                        <li><a href="categories.html">Categories</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Customer Service</h3>
+                    <ul>
+                        <li><a href="faq.html">FAQ</a></li>
+                        <li><a href="shipping.html">Shipping & Returns</a></li>
+                        <li><a href="terms.html">Terms & Conditions</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Info</h3>
+                    <ul class="contact-info">
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Main Street, City, Country</li>
+                        <li><i class="fas fa-phone"></i> +1 234 567 890</li>
+                        <li><i class="fas fa-envelope"></i> info@shopease.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 ShopEase. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="../js/main.js"></script>
+    <script>
+        // FAQ accordion functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const faqItems = document.querySelectorAll('.faq-item');
+            const faqCategories = document.querySelectorAll('.faq-category');
+            
+            // Toggle FAQ answers
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                
+                question.addEventListener('click', () => {
+                    item.classList.toggle('active');
+                });
+            });
+            
+            // Filter FAQ items by category
+            faqCategories.forEach(category => {
+                category.addEventListener('click', () => {
+                    // Remove active class from all categories
+                    faqCategories.forEach(cat => cat.classList.remove('active'));
+                    
+                    // Add active class to clicked category
+                    category.classList.add('active');
+                    
+                    const selectedCategory = category.getAttribute('data-category');
+                    
+                    // Show/hide FAQ items based on category
+                    faqItems.forEach(item => {
+                        if (selectedCategory === 'all' || item.getAttribute('data-category') === selectedCategory) {
+                            item.style.display = 'block';
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>

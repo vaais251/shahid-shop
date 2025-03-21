@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Placeholder Images</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .placeholder {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 20px;
+            background-color: #4a6de5;
+        }
+        .product {
+            width: 600px;
+            height: 400px;
+        }
+        .category {
+            width: 600px;
+            height: 400px;
+        }
+        .about {
+            width: 800px;
+            height: 500px;
+        }
+        .team {
+            width: 400px;
+            height: 500px;
+        }
+        .hero {
+            width: 1200px;
+            height: 600px;
+            background-color: #333333;
+        }
+        .cat-small {
+            width: 400px;
+            height: 300px;
+        }
+        .electronics { background-color: #4a6de5; }
+        .fashion { background-color: #ff6b6b; }
+        .home { background-color: #28a745; }
+        .beauty { background-color: #ffc107; color: #333; }
+        .sports { background-color: #17a2b8; }
+        .books { background-color: #6f42c1; }
+        
+        .controls {
+            margin-bottom: 30px;
+        }
+        button {
+            padding: 10px 15px;
+            background-color: #4a6de5;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+        button:hover {
+            background-color: #3a5bc5;
+        }
+    </style>
+</head>
+<body>
+    <h1>ShopEase Placeholder Image Creator</h1>
+    <p>This tool creates placeholder images for your e-commerce website. Click on each button to save the corresponding set of images.</p>
+    
+    <div class="controls">
+        <button onclick="saveAllImages()">Save All Images</button>
+        <button onclick="saveProductImages()">Save Product Images</button>
+        <button onclick="saveCategoryImages()">Save Category Images</button>
+        <button onclick="saveAboutImages()">Save About Images</button>
+        <button onclick="saveTeamImages()">Save Team Images</button>
+        <button onclick="saveHomeImages()">Save Home Images</button>
+    </div>
+    
+    <h2>Product Images</h2>
+    <div id="product-images">
+        <div class="placeholder product electronics" id="headphones">Product: Headphones</div>
+        <div class="placeholder product electronics" id="fitness-tracker">Product: Fitness Tracker</div>
+        <div class="placeholder product fashion" id="mens-shirt">Product: Men's Shirt</div>
+        <div class="placeholder product fashion" id="womens-shoes">Product: Women's Shoes</div>
+        <div class="placeholder product home" id="water-bottle">Product: Water Bottle</div>
+        <div class="placeholder product home" id="candle">Product: Candle</div>
+        <div class="placeholder product beauty" id="face-serum">Product: Face Serum</div>
+        <div class="placeholder product beauty" id="lip-balm">Product: Lip Balm</div>
+    </div>
+    
+    <h2>Category Images</h2>
+    <div id="category-images">
+        <div class="placeholder category electronics" id="electronics">Category: Electronics</div>
+        <div class="placeholder category fashion" id="fashion">Category: Fashion</div>
+        <div class="placeholder category home" id="home">Category: Home</div>
+        <div class="placeholder category beauty" id="beauty">Category: Beauty</div>
+        <div class="placeholder category sports" id="sports">Category: Sports</div>
+        <div class="placeholder category books" id="books">Category: Books</div>
+    </div>
+    
+    <h2>About Images</h2>
+    <div id="about-images">
+        <div class="placeholder about electronics" id="store-front">About: Store Front</div>
+        <div class="placeholder about home" id="team-meeting">About: Team Meeting</div>
+    </div>
+    
+    <h2>Team Images</h2>
+    <div id="team-images">
+        <div class="placeholder team electronics" id="ceo">Team: CEO</div>
+        <div class="placeholder team fashion" id="cto">Team: CTO</div>
+        <div class="placeholder team home" id="marketing">Team: Marketing</div>
+        <div class="placeholder team beauty" id="design">Team: Design</div>
+    </div>
+    
+    <h2>Home Page Images</h2>
+    <div id="home-images">
+        <div class="placeholder hero" id="hero-bg">Hero Background</div>
+        <div class="placeholder cat-small electronics" id="category-electronics">Category: Electronics</div>
+        <div class="placeholder cat-small fashion" id="category-fashion">Category: Fashion</div>
+        <div class="placeholder cat-small home" id="category-home">Category: Home</div>
+        <div class="placeholder cat-small beauty" id="category-beauty">Category: Beauty</div>
+    </div>
+
+    <script>
+        function saveImage(element, folder, filename) {
+            // Create a canvas element
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+            
+            // Set canvas dimensions to match the element
+            canvas.width = element.offsetWidth;
+            canvas.height = element.offsetHeight;
+            
+            // Draw background
+            ctx.fillStyle = window.getComputedStyle(element).backgroundColor;
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            // Draw text
+            ctx.font = 'bold 24px Arial';
+            ctx.fillStyle = window.getComputedStyle(element).color;
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillText(element.textContent, canvas.width / 2, canvas.height / 2);
+            
+            // Create download link
+            const link = document.createElement('a');
+            link.download = filename;
+            link.href = canvas.toDataURL('image/jpeg');
+            
+            // Append to body, click, and remove
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            
+            console.log(`Saved ${filename} to ${folder}`);
+        }
+        
+        function saveProductImages() {
+            const productElements = document.querySelectorAll('#product-images .placeholder');
+            productElements.forEach(element => {
+                saveImage(element, 'products', `${element.id}.jpg`);
+            });
+        }
+        
+        function saveCategoryImages() {
+            const categoryElements = document.querySelectorAll('#category-images .placeholder');
+            categoryElements.forEach(element => {
+                saveImage(element, 'categories', `${element.id}.jpg`);
+            });
+        }
+        
+        function saveAboutImages() {
+            const aboutElements = document.querySelectorAll('#about-images .placeholder');
+            aboutElements.forEach(element => {
+                saveImage(element, 'about', `${element.id}.jpg`);
+            });
+        }
+        
+        function saveTeamImages() {
+            const teamElements = document.querySelectorAll('#team-images .placeholder');
+            teamElements.forEach(element => {
+                saveImage(element, 'team', `${element.id}.jpg`);
+            });
+        }
+        
+        function saveHomeImages() {
+            const homeElements = document.querySelectorAll('#home-images .placeholder');
+            homeElements.forEach(element => {
+                saveImage(element, 'home', `${element.id}.jpg`);
+            });
+        }
+        
+        function saveAllImages() {
+            saveProductImages();
+            saveCategoryImages();
+            saveAboutImages();
+            saveTeamImages();
+            saveHomeImages();
+        }
+    </script>
+</body>
+</html>

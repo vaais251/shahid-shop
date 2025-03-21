@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="800" height="500" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="500" fill="#28a745"/>
+  <text x="400" y="250" font-family="Arial" font-size="42" text-anchor="middle" fill="white">Team Meeting</text>
+  
+  <!-- Table -->
+  <rect x="200" y="300" width="400" height="100" rx="5" fill="white" opacity="0.3"/>
+  
+  <!-- People around table -->
+  <circle cx="250" cy="270" r="30" fill="white" opacity="0.6"/>
+  <circle cx="350" cy="270" r="30" fill="white" opacity="0.6"/>
+  <circle cx="450" cy="270" r="30" fill="white" opacity="0.6"/>
+  <circle cx="550" cy="270" r="30" fill="white" opacity="0.6"/>
+  
+  <circle cx="250" cy="430" r="30" fill="white" opacity="0.6"/>
+  <circle cx="350" cy="430" r="30" fill="white" opacity="0.6"/>
+  <circle cx="450" cy="430" r="30" fill="white" opacity="0.6"/>
+  <circle cx="550" cy="430" r="30" fill="white" opacity="0.6"/>
+</svg>

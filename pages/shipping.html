@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shipping & Returns - ShopEase</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        /* Shipping & Returns Page Specific Styles */
+        .shipping-container {
+            padding: 60px 0;
+        }
+        
+        .shipping-header {
+            margin-bottom: 40px;
+            text-align: center;
+        }
+        
+        .policy-section {
+            background-color: white;
+            border-radius: 8px;
+            padding: 30px;
+            margin-bottom: 40px;
+            box-shadow: var(--box-shadow);
+        }
+        
+        .policy-section h2 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .policy-section h3 {
+            margin-top: 25px;
+            margin-bottom: 15px;
+            color: var(--text-color);
+        }
+        
+        .policy-section p, .policy-section ul {
+            margin-bottom: 15px;
+            line-height: 1.7;
+        }
+        
+        .policy-section ul {
+            padding-left: 20px;
+        }
+        
+        .policy-section ul li {
+            margin-bottom: 10px;
+            position: relative;
+            list-style-type: none;
+        }
+        
+        .policy-section ul li::before {
+            content: "•";
+            color: var(--primary-color);
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+        }
+        
+        .shipping-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        
+        .shipping-table th, .shipping-table td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .shipping-table th {
+            background-color: var(--secondary-color);
+            font-weight: 600;
+        }
+        
+        .shipping-table tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .shipping-table tr:hover td {
+            background-color: #f9f9f9;
+        }
+        
+        .contact-cta {
+            text-align: center;
+            background-color: var(--secondary-color);
+            border-radius: 8px;
+            padding: 30px;
+            margin-top: 40px;
+        }
+        
+        .contact-cta h3 {
+            margin-bottom: 15px;
+            color: var(--text-color);
+        }
+        
+        .contact-cta p {
+            margin-bottom: 20px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>ShopEase</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="shop.html">Shop</a></li>
+                    <li><a href="categories.html">Categories</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="header-icons">
+                <a href="account.html"><i class="fas fa-user"></i></a>
+                <a href="wishlist.html"><i class="fas fa-heart"></i></a>
+                <a href="cart.html" class="cart-icon">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count">0</span>
+                </a>
+            </div>
+            <div class="mobile-menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Shipping & Returns Section -->
+    <section class="shipping-container">
+        <div class="container">
+            <div class="shipping-header">
+                <h1 class="section-title">Shipping & Returns</h1>
+                <p>Information about our shipping policies, delivery times, and return procedures</p>
+            </div>
+            
+            <div class="policy-section">
+                <h2>Shipping Policy</h2>
+                
+                <h3>Processing Time</h3>
+                <p>All orders are processed within 1-2 business days (excluding weekends and holidays) after receiving your order confirmation email. You will receive another notification when your order has shipped.</p>
+                
+                <h3>Shipping Rates & Delivery Times</h3>
+                <p>We offer various shipping options to meet your needs. Shipping rates are calculated based on the weight of your items and your location.</p>
+                
+                <table class="shipping-table">
+                    <thead>
+                        <tr>
+                            <th>Shipping Method</th>
+                            <th>Estimated Delivery Time</th>
+                            <th>Cost</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Standard Shipping</td>
+                            <td>3-5 business days</td>
+                            <td>$5.99 (Free on orders over $50)</td>
+                        </tr>
+                        <tr>
+                            <td>Express Shipping</td>
+                            <td>2-3 business days</td>
+                            <td>$12.99</td>
+                        </tr>
+                        <tr>
+                            <td>Next Day Delivery</td>
+                            <td>1 business day</td>
+                            <td>$24.99</td>
+                        </tr>
+                        <tr>
+                            <td>International Shipping</td>
+                            <td>7-14 business days</td>
+                            <td>Varies by location</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <p>Please note that these are estimates and cannot be guaranteed. Delivery time depends on the shipping carrier and other factors outside our control.</p>
+                
+                <h3>International Shipping</h3>
+                <p>We ship to most countries worldwide. International customers may be subject to customs fees, taxes, and duties upon arrival of their package. These fees are the responsibility of the recipient and are not included in the shipping cost.</p>
+                
+                <h3>Tracking Information</h3>
+                <p>Once your order ships, you will receive a tracking number via email. You can also find tracking information by logging into your account on our website.</p>
+            </div>
+            
+            <div class="policy-section">
+                <h2>Return Policy</h2>
+                
+                <h3>Return Eligibility</h3>
+                <p>We offer a 30-day return policy for most items. To be eligible for a return, your item must be:</p>
+                <ul>
+                    <li>In the same condition that you received it</li>
+                    <li>Unworn, unused, and with all tags attached</li>
+                    <li>In the original packaging</li>
+                </ul>
+                
+                <h3>Non-Returnable Items</h3>
+                <p>The following items cannot be returned:</p>
+                <ul>
+                    <li>Gift cards</li>
+                    <li>Downloadable products</li>
+                    <li>Personalized items</li>
+                    <li>Intimate apparel</li>
+                    <li>Health and personal care items</li>
+                    <li>Items marked as "Final Sale" or "Non-Returnable"</li>
+                </ul>
+                
+                <h3>Return Process</h3>
+                <p>To initiate a return, please follow these steps:</p>
+                <ol>
+                    <li>Log into your account and navigate to your order history</li>
+                    <li>Select the order containing the item(s) you wish to return</li>
+                    <li>Click the "Return Items" button and follow the instructions</li>
+                    <li>Print the prepaid return shipping label (if applicable)</li>
+                    <li>Package the item(s) securely with all original packaging and tags</li>
+                    <li>Attach the return shipping label to the outside of the package</li>
+                    <li>Drop off the package at the designated shipping carrier location</li>
+                </ol>
+                
+                <h3>Refunds</h3>
+                <p>Once we receive and inspect your return, we will send you an email to notify you that we have received your returned item. We will also notify you of the approval or rejection of your refund.</p>
+                <p>If approved, your refund will be processed, and a credit will automatically be applied to your original method of payment within 5-10 business days. Please note that depending on your credit card company, it may take an additional 2-10 business days for the refund to appear on your statement.</p>
+                
+                <h3>Return Shipping Costs</h3>
+                <p>For standard returns, customers are responsible for return shipping costs. If you received a defective or incorrect item, we will provide a prepaid return shipping label and reimburse your original shipping cost.</p>
+                
+                <h3>Exchanges</h3>
+                <p>If you need to exchange an item for a different size or color, please return the original item and place a new order for the desired item. This ensures the fastest processing time.</p>
+            </div>
+            
+            <div class="contact-cta">
+                <h3>Need Help?</h3>
+                <p>If you have any questions about our shipping or return policies, please don't hesitate to contact our customer service team.</p>
+                <a href="contact.html" class="btn">Contact Us</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>ShopEase</h3>
+                    <p>Your one-stop shop for all your needs. Quality products at affordable prices.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-pinterest"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="shop.html">Shop</a></li>
+                        <li><a href="categories.html">Categories</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Customer Service</h3>
+                    <ul>
+                        <li><a href="faq.html">FAQ</a></li>
+                        <li><a href="shipping.html">Shipping & Returns</a></li>
+                        <li><a href="terms.html">Terms & Conditions</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Info</h3>
+                    <ul class="contact-info">
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Main Street, City, Country</li>
+                        <li><i class="fas fa-phone"></i> +1 234 567 890</li>
+                        <li><i class="fas fa-envelope"></i> info@shopease.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 ShopEase. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="../js/main.js"></script>
+</body>
+</html>
